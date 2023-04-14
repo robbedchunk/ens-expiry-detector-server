@@ -1,0 +1,23 @@
+{
+  "name": "ens-expiry-detector-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ensdomains/ens-contracts": "^0.0.20",
+    "@ensdomains/ensjs": "^3.0.0-alpha.59",
+    "@ensdomains/eth-ens-namehash": "^2.0.15",
+    "ethereum-ens": "^0.8.0",
+    "express": "^4.18.2",
+    "memory-cache": "^0.2.0",
+    "moment": "^2.29.4",
+    "table": "^6.8.1",
+    "web3": "^1.6.1"
+  }
+}
