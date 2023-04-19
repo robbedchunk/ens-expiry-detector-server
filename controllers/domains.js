@@ -2,14 +2,10 @@ const { checkDomain } = require('./../services/domains');
 
 const domainsRouter = require("express").Router();
 
-domainsRouter.get("/", (req, res) => {
-  res.send("Hello, Domains!");
-});
-
-domainsRouter.get("/:name", (req, res) => {
+domainsRouter.get("/:name", async (req, res) => {
   const name = req.params.name;
-  const response = checkDomain(name);
-  res.send(response);
+  const response = await checkDomain(name);
+  res.json(response);
 });
 
 module.exports = domainsRouter;
