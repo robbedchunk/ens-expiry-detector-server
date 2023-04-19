@@ -1,37 +1,12 @@
 const express = require("express");
-const cache = require("memory-cache");
 const app = express();
-const port = 3000;
-const { checkAllDomains, checkDomain } = require("./ens-utils");
 
-// Your checkAllDomains and checkDomain functions here
+const domainsRouter = require("./controllers/domains");
 
-app.get("/domain/:name", async (req, res) => {
-  const domain = req.params.name;
-
-  const cachedData = cache.get(domain);
-
-  if (cachedData) {
-    res.json(cachedData);
-  } else {
-    const data = await checkDomain(domain);
-    cache.put(domain, data, 10 * 60 * 1000); // Cache for 10 minutes
-    res.json(data);
-  }
+app.get("/", (req, res) => {
+  res.send("Hello, world!");
 });
 
-app.get("/all-domains", async (req, res) => {
-  const cachedData = cache.get("allDomains");
+app.use("/domains", domainsRouter);
 
-  if (cachedData) {
-    res.json(cachedData);
-  } else {
-    const data = await checkAllDomains();
-    cache.put("allDomains", data, 10 * 60 * 1000); // Cache for 10 minutes
-    res.json(data);
-  }
-});
-
-app.listen(port, () => {
-  console.log(`ENS checker app listening at http://localhost:${port}`);
-});
+module.exports = app;
