@@ -9,6 +9,7 @@ const recordSchema = new mongoose.Schema({
   available: Boolean,
   owner: String,
   expirationDate: Date,
+  lastUpdated: Date,
 });
 
 module.exports = mongoose.model("Record", recordSchema);
