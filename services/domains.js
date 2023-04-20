@@ -3,9 +3,11 @@ const { ethers } = require('ethers');
 const { keccak256 } = require('ethers/lib/utils');
 const { BaseRegistrarImplementation } = require('@ensdomains/ens-contracts');
 
+const config = require('./../utils/config');
+
 const ensBaseRegistrarAddress = '0x57f1887a8BF19b14fC0dF6Fd9B2acc9Af147eA85';
 
-const provider = new Web3.providers.HttpProvider('https://mainnet.infura.io/v3/61171ca8c7e74d74a86e2ee706c7558b');
+const provider = new Web3.providers.HttpProvider(`https://mainnet.infura.io/v3/${config.INFURA_API_KEY}`);
 const ethersProvider = new ethers.providers.Web3Provider(provider);
 
 const checkDomain = async (domain) => {
