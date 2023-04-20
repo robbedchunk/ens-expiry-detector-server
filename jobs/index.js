@@ -1,5 +1,6 @@
 const { checkDomain } = require("./../services/domains");
 const Record = require("./../models/Record");
+const { getParameter, get } = require("../services/parameters");
 
 const getThreeCharacterDomains = () => {
   const chars = "0123456789abcdefghijklmnopqrstuvwxyz";
@@ -16,10 +17,12 @@ const getThreeCharacterDomains = () => {
   return domains;
 };
 
+
 const updateDatabaseRecords = async () => {
   const domains = getThreeCharacterDomains();
 
   for (let i = 0; i < domains.length; i++) {
+    if (!get('canRun')) return
     const domain = domains[i];
 
     // Is domain already in the database?

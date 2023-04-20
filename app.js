@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 
 const config = require("./utils/config");
-const domainsRouter = require("./controllers/domains");
+const {domainsRouter} = require("./controllers/domains");
 
 // Database config
 const mongoose = require('mongoose')
